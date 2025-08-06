@@ -20,6 +20,6 @@ func main() {
 	router := http.NewServeMux()
 	api.SetupRoutes(router, db)
 
-	// fmt.Println("Server is running on http://localhost:3000")
-	log.Fatal(http.ListenAndServe(":3000", router))
+	// fmt.Println("Server is running on http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
