@@ -5,5 +5,5 @@ type User struct {
 	Name     string  `json:"title"`
 	Email    string  `json:"email"`
 	Password string  `json:"password"`
-	Photo    *string `json:"photo"`
+	Photo    *string `json:"photo,omitempty"`
 }
