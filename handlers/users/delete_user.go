@@ -24,13 +24,13 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 
 			databse.UserList = updatedUser
 
-			// set response type
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusOK)
-
-			// send the response
-			json.NewEncoder(w).Encode("user deleted successfully...")
 		}
+		// set response type
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+
+		// send the response
+		json.NewEncoder(w).Encode("user deleted successfully...")
 	}
 
 	// if user not found

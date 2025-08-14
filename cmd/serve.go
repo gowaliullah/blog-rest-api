@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gowaliullah/blog-rest-api/handlers"
+	"github.com/gowaliullah/blog-rest-api/handlers/posts"
 	"github.com/gowaliullah/blog-rest-api/handlers/users"
 )
 
@@ -14,9 +15,17 @@ func Serve() {
 
 	mux.HandleFunc("/", handlers.WelcomeHandler)
 	mux.HandleFunc("GET /about", handlers.AboutHandler)
+
+	// users related routes
 	mux.HandleFunc("POST /users", users.CreateUser)
 	mux.HandleFunc("GET /users", users.GetUsers)
 	mux.HandleFunc("GET /users/{id}", users.GetSingleUser)
+	mux.HandleFunc("DELETE /users/{id}", users.DeleteUser)
+
+	// users related routes
+	mux.HandleFunc("POST /posts", posts.CreatePosts)
+	mux.HandleFunc("GET /posts", users.GetUsers)
+	mux.HandleFunc("GET /posts/{id}", users.GetSingleUser)
 
 	fmt.Println("Server running on PORT: 8080")
 
