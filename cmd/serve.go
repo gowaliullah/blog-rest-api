@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gowaliullah/blog-rest-api/handlers"
+	"github.com/gowaliullah/blog-rest-api/handlers/users"
 )
 
 func Serve() {
@@ -13,6 +14,7 @@ func Serve() {
 
 	mux.HandleFunc("/", handlers.WelcomeHandler)
 	mux.HandleFunc("/about", handlers.AboutHandler)
+	mux.HandleFunc("/users", users.GetUsers)
 
 	fmt.Println("Server running on PORT: 8080")
 
