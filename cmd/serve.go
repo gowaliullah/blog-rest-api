@@ -15,6 +15,7 @@ func Serve() {
 	mux.HandleFunc("/", handlers.WelcomeHandler)
 	mux.HandleFunc("/about", handlers.AboutHandler)
 	mux.HandleFunc("/users", users.GetUsers)
+	mux.HandleFunc("/users/{id}", users.GetSingleUser)
 
 	fmt.Println("Server running on PORT: 8080")
 
