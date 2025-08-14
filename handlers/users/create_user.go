@@ -31,6 +31,6 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 
 	// send the response
-	json.NewEncoder(w).Encode(databse.UserList)
+	json.NewEncoder(w).Encode(newUser)
 
 }
