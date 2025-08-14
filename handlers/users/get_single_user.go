@@ -11,27 +11,26 @@ import (
 func GetSingleUser(w http.ResponseWriter, r *http.Request) {
 	// get id from the header path
 	userId := r.PathValue("id")
-	// convert the id
-	id, err := strconv.Atoi(userId)
 
-	// id the id is not valid send err
+	// convert the id to int
+	id, err := strconv.Atoi(userId)
 	if err != nil {
-		http.Error(w, "Please send the valid user id", 400)
+		http.Error(w, "Please send the valid user id", http.StatusBadRequest)
 		return
 	}
 
+	// set response content type
+	w.Header().Set("Content-Type", "application/json")
+
+	// search user by ID
 	for _, user := range databse.UserList {
-		// check the user id
 		if user.ID == id {
-			// send the matched user
-			w.WriteHeader(200)
-			encoder := json.NewEncoder(w)
-			encoder.Encode(user)
+			w.WriteHeader(http.StatusOK)
+			json.NewEncoder(w).Encode(user)
 			return
 		}
 	}
-	// do not matched the use
-	w.WriteHeader(404)
-	encoder := json.NewEncoder(w)
-	encoder.Encode("User Not Found.....")
+	// if user not found
+	w.WriteHeader(http.StatusNotFound)
+	json.NewEncoder(w).Encode("User Not Found.....")
 }

@@ -12,7 +12,3 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 	encoder := json.NewEncoder(w)
 	encoder.Encode(databse.UserList)
 }
-
-// w.WriteHeader(statusCode)
-// 	encoder := json.NewEncoder(w)
-// 	encoder.Encode(data)

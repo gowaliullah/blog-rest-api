@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gowaliullah/blog-rest-api/cmd"
-	"github.com/gowaliullah/blog-rest-api/databse"
+	databse "github.com/gowaliullah/blog-rest-api/databse"
 )
 
 func main() {
