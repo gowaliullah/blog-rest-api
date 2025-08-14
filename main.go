@@ -5,21 +5,15 @@ import (
 	"net/http"
 
 	"github.com/gowaliullah/blog-rest-api/databse"
+	"github.com/gowaliullah/blog-rest-api/handlers"
 )
-
-var welcomeHandler = func(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome to my blog server API, thanks for visiting")
-}
-var aboutHandler = func(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Our purpose to service real world news supply")
-}
 
 func main() {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", welcomeHandler)
-	mux.HandleFunc("/about", aboutHandler)
+	mux.HandleFunc("/", handlers.WelcomeHandler)
+	mux.HandleFunc("/about", handlers.AboutHandler)
 
 	fmt.Println("Server running on PORT: 8080")
 
