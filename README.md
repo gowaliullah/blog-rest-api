@@ -1,10 +1,12 @@
 # 📝 Blog REST API (Golang)
 
+A simple **Blog REST API** built with **Golang**.  
+
 A lightweight Blog REST API built with Go. This README tells you **how to run it locally (step-by-step)** and **which APIs are available**.
+This project demonstrates basic CRUD operations for **Users, Posts, Categories, Tags, Menus, and Social Icons** using in-memory storage (no database yet).
 
 ---
 
-## ▶️ Run Locally (Step by Step)
 
 **Prerequisite:** Go **1.22+**
 
@@ -13,11 +15,6 @@ A lightweight Blog REST API built with Go. This README tells you **how to run it
    git clone https://github.com/gowaliullah/blog-rest-api.git
    cd blog-rest-api
 
-
-# 📝 Blog REST API (Golang)
-
-A simple **Blog REST API** built with **Golang**.  
-This project demonstrates basic CRUD operations for **Users, Posts, Categories, Tags, Menus, and Social Icons** using in-memory storage (no database yet).
 
 ---
 
@@ -34,5 +31,5 @@ This project demonstrates basic CRUD operations for **Users, Posts, Categories, 
 
 ---
 
-## 📂 Project Structure
 
+## 📂 Project Structure
