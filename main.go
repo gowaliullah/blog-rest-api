@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/gowaliullah/blog-rest-api/databse"
 )
 
 var welcomeHandler = func(w http.ResponseWriter, r *http.Request) {
@@ -26,4 +28,8 @@ func main() {
 		fmt.Println("Error starting the server", err)
 	}
 
+}
+
+func init() {
+	databse.Users()
 }
