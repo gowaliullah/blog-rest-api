@@ -33,4 +33,5 @@ func main() {
 func init() {
 	databse.Users()
 	databse.Posts()
+	databse.Comments()
 }
