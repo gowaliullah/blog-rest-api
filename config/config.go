@@ -1,27 +1,33 @@
 package config
 
 import (
+	"database/sql"
 	"fmt"
+	"log"
 	"os"
 
-	"github.com/gowaliullah/blog-rest-api/models"
 	"github.com/joho/godotenv"
 )
 
-// LoadConfig loads environment variables into a Config struct
-func LoadConfig() (*models.Config, error) {
+func ConnectDB() {
 
-	if err := godotenv.Load(); err != nil {
-		return nil, fmt.Errorf("error loading .env file: %w", err)
+	// Load the .env file
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
 	}
 
-	cfg := &models.Config{
-		DBHost:     os.Getenv("DB_HOST"),
-		DBPort:     os.Getenv("DB_PORT"),
-		DBUser:     os.Getenv("DB_USER"),
-		DBPassword: os.Getenv("DB_PASSWORD"),
-		DBName:     os.Getenv("DB_NAME"),
+	// DB
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+
+	err = db.Ping()
+	if err != nil {
+		panic(err)
 	}
 
-	return cfg, nil
+	fmt.Println("Successfully connected!")
 }

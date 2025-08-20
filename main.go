@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/gowaliullah/blog-rest-api/cmd"
-	databse "github.com/gowaliullah/blog-rest-api/databse"
 )
 
 func main() {
@@ -10,10 +9,11 @@ func main() {
 }
 
 func init() {
-	databse.Users()
-	databse.Posts()
-	databse.Comments()
-	databse.Menus()
-	databse.Tags()
-	databse.Categories()
+	// databse.DB()
+	// databse.Users()
+	// databse.Posts()
+	// databse.Comments()
+	// databse.Menus()
+	// databse.Tags()
+	// databse.Categories()
 }
