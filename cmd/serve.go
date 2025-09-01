@@ -7,11 +7,11 @@ import (
 	_ "github.com/lib/pq"
 
 	"github.com/gowaliullah/blog-rest-api/config"
-	"github.com/gowaliullah/blog-rest-api/handlers"
-	"github.com/gowaliullah/blog-rest-api/handlers/category"
-	"github.com/gowaliullah/blog-rest-api/handlers/comment"
-	"github.com/gowaliullah/blog-rest-api/handlers/menu"
-	"github.com/gowaliullah/blog-rest-api/handlers/tag"
+	"github.com/gowaliullah/blog-rest-api/rest/handlers"
+	"github.com/gowaliullah/blog-rest-api/rest/handlers/category"
+	"github.com/gowaliullah/blog-rest-api/rest/handlers/comment"
+	"github.com/gowaliullah/blog-rest-api/rest/handlers/menu"
+	"github.com/gowaliullah/blog-rest-api/rest/handlers/tag"
 	// "github.com/gowaliullah/blog-rest-api/handlers/users"
 )
 
@@ -24,7 +24,8 @@ func Serve() {
 
 	// users related routes
 	// mux.HandleFunc("POST /users", users.CreateUser)
-	// mux.HandleFunc("GET /users", users.GetUsers)
+	// mux.HandleFunc("GET /users", users.GetAllUsers())
+
 	// mux.HandleFunc("GET /users/{id}", users.GetSingleUser)
 	// mux.HandleFunc("DELETE /users/{id}", users.DeleteUser)
 

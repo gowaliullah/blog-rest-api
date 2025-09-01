@@ -1,5 +1,6 @@
 -- Create the ENUM type for role
 CREATE TYPE user_role AS ENUM ('admin', 'author', 'reader');
+DROP TYPE user_role; 
 
 -- Users table
 CREATE TABLE users (
@@ -12,7 +13,8 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-DROP TYPE user_role; 
+
+SELECT * FROM users;
 
 
 -- Categories table
@@ -122,3 +124,14 @@ CREATE TABLE menu_items (
     FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE SET NULL,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL
 );
+
+
+
+
+
+INSERT INTO users (username, email, password, user_role) VALUES
+('johndoe', 'john.doe@example.com', 'hashedpassword123', 'admin'),
+('janedoe', 'jane.doe@example.com', 'hashedpassword456', 'author'),
+('peterpan', 'peter.pan@example.com', 'hashedpassword789', 'reader'),
+('aliceblue', 'alice.blue@example.com', 'hashedpasswordabc', 'author'),
+('bobthebuilder', 'bob.builder@example.com', 'hashedpassworddef', 'reader');
