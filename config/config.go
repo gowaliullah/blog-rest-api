@@ -9,6 +9,14 @@ import (
 	"github.com/joho/godotenv"
 )
 
+var config Config
+
+type Config struct {
+	Version     string
+	ServiceName string
+	HttpPort    int
+}
+
 func ConnectDB() {
 
 	// Load the .env file
