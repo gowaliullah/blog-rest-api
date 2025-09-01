@@ -15,6 +15,7 @@ type Config struct {
 	Version     string
 	ServiceName string
 	HttpPort    int
+	DB          *sql.DB
 }
 
 func loadConfig() {
@@ -42,6 +43,36 @@ func loadConfig() {
 		os.Exit(1)
 	}
 
+	database_url := os.Getenv("DATABASE_URL")
+	if database_url == "" {
+		log.Fatalf("DATABASE_URL is not loaded: %v", err)
+		os.Exit(1)
+	}
+
+	// Postgres connection
+	db, err := sql.Open("postgres", database_url)
+	if err != nil {
+		log.Fatalf("failed to connect to database: %v", err)
+	}
+
+	if err := db.Ping(); err != nil {
+		log.Fatalf("failed to ping database: %v", err)
+	}
+
+	fmt.Println("✅ Successfully connected to database!")
+
+	config = Config{
+		Version:     version,
+		ServiceName: serviceName,
+		HttpPort:    httpPort,
+		DB:          db,
+	}
+
+}
+
+func GetConfig() Config {
+	loadConfig()
+	return config
 }
 
 func ConnectDB() {
