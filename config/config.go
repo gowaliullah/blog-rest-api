@@ -64,7 +64,7 @@ func loadConfig() {
 	config = Config{
 		Version:     version,
 		ServiceName: serviceName,
-		HttpPort:    httpPort,
+		HttpPort:    8080,
 		DB:          db,
 	}
 
