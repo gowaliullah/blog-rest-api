@@ -15,7 +15,7 @@ import (
 	// "github.com/gowaliullah/blog-rest-api/handlers/users"
 )
 
-func Serve() {
+func Serve_prev() {
 
 	mux := http.NewServeMux()
 	config.ConnectDB()
