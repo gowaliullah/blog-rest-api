@@ -6,17 +6,19 @@ import (
 	"net/http"
 
 	"github.com/gowaliullah/blog-rest-api/models"
+	"github.com/gowaliullah/blog-rest-api/util"
 )
 
 var db *sql.DB
 
-func GetAllUsers(w http.ResponseWriter, r *http.Request) ([]models.User, error) {
+func GetUsers(w http.ResponseWriter, r *http.Request) {
 	var users []models.User
 	query := `SELECT user_id, username, email, password, user_role, created_at, updated_at FROM users`
 
 	rows, err := db.Query(query)
 	if err != nil {
-		return nil, fmt.Errorf("could not get all users: %v", err)
+		util.SendError(w, http.StatusInternalServerError, fmt.Sprintf("could not get all users: %v", err))
+		return
 	}
 	defer rows.Close()
 
@@ -24,15 +26,16 @@ func GetAllUsers(w http.ResponseWriter, r *http.Request) ([]models.User, error) 
 		var user models.User
 		err := rows.Scan(&user.UserID, &user.Username, &user.Email, &user.Password, &user.UserRole, &user.CreatedAt, &user.UpdatedAt)
 		if err != nil {
-			return nil, fmt.Errorf("could not scan user row: %v", err)
+			util.SendError(w, http.StatusInternalServerError, fmt.Sprintf("could not scan user row: %v", err))
+			return
 		}
 
 		users = append(users, user)
 	}
 	if err = rows.Err(); err != nil {
-		return nil, fmt.Errorf("error in rows iteration: %v", err)
+		util.SendError(w, http.StatusInternalServerError, fmt.Sprintf("error in rows iteration: %v", err))
+		return
 	}
 
-	w.WriteHeader(http.StatusNotFound)
-	return users, nil
+	util.SendData(w, users, http.StatusOK)
 }
